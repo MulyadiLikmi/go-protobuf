@@ -30,58 +30,44 @@ func TestProductService_CreateProduct(t *testing.T) {
 }
 
 func TestProductService_GetProductByID(t *testing.T) {
-	// Initialize the mock repository
 	mockRepo := new(repository.MockProductRepository)
 	product := &repository.Product{ID: "1", Name: "Product 1", Stock: 10}
 
-	// Set expectations for the mock
 	mockRepo.On("GetByID", mock.Anything, "1").Return(product, nil)
 
-	// Initialize the service
 	productService := service.NewProductService(mockRepo)
 
 	// Call the GetProductByID method
 	result, err := productService.GetProductByID(context.Background(), "1")
 
-	// Assert the expectations
 	assert.NoError(t, err)
 	assert.Equal(t, product, result)
 	mockRepo.AssertExpectations(t)
 }
 
 func TestProductService_UpdateProduct(t *testing.T) {
-	// Initialize the mock repository
 	mockRepo := new(repository.MockProductRepository)
 	product := &repository.Product{ID: "1", Name: "Product 1", Stock: 10}
 
-	// Set expectations for the mock
 	mockRepo.On("Update", mock.Anything, product).Return(nil)
 
-	// Initialize the service
 	productService := service.NewProductService(mockRepo)
 
-	// Call the UpdateProduct method
 	err := productService.UpdateProduct(context.Background(), product)
 
-	// Assert the expectations
 	assert.NoError(t, err)
 	mockRepo.AssertExpectations(t)
 }
 
 func TestProductService_DeleteProduct(t *testing.T) {
-	// Initialize the mock repository
 	mockRepo := new(repository.MockProductRepository)
 
-	// Set expectations for the mock
 	mockRepo.On("Delete", mock.Anything, "1").Return(nil)
 
-	// Initialize the service
 	productService := service.NewProductService(mockRepo)
 
-	// Call the DeleteProduct method
 	err := productService.DeleteProduct(context.Background(), "1")
 
-	// Assert the expectations
 	assert.NoError(t, err)
 	mockRepo.AssertExpectations(t)
 }
