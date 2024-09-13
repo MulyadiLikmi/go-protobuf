@@ -35,7 +35,7 @@ func main() {
 	log.Println("Connected to MongoDB")
 
 	// Create the repository and service instances
-	productRepository := repository.NewProductRepository(client.Database("product_protobuf"))
+	productRepository := repository.NewMongoProductRepository(client.Database("product_protobuf"))
 	productService := service.NewProductService(productRepository)
 
 	// Set up gRPC server
@@ -74,3 +74,7 @@ func main() {
 
 // Delete Product
 // grpcurl -d "{\"id\": \"1\"}" -plaintext localhost:50051 proto.ProductService/DeleteProduct
+
+// Testing
+// go test -v ./test_testify
+// go test -v ./test_builtin

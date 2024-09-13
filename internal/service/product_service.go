@@ -1,3 +1,4 @@
+// service/product_service.go
 package service
 
 import (
@@ -6,10 +7,10 @@ import (
 )
 
 type ProductService struct {
-	repo *repository.ProductRepository
+	repo repository.IProductRepo
 }
 
-func NewProductService(repo *repository.ProductRepository) *ProductService {
+func NewProductService(repo repository.IProductRepo) *ProductService {
 	return &ProductService{repo: repo}
 }
 
