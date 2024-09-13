@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package proto;
+
+option go_package = "/proto";
+
+import "google/protobuf/empty.proto";
+
+message Product {
+    string id = 1;
+    string name = 2;
+    int32 stock = 3;
+}
+
+message ProductResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+message ProductList {
+    repeated Product products = 1;
+}
+
+service ProductService {
+    rpc CreateProduct(Product) returns (ProductResponse);
+    rpc GetProductByID(Product) returns (Product);
+    rpc UpdateProduct(Product) returns (ProductResponse);
+    rpc DeleteProduct(Product) returns (ProductResponse);
+    rpc ListProducts(google.protobuf.Empty) returns (ProductList);
+}
