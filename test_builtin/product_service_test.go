@@ -8,7 +8,6 @@ import (
 )
 
 func TestProductService_CreateProduct(t *testing.T) {
-	// Assuming you have a mock repository with a Create method
 	mockRepo := &repository.MockProductRepository{}
 	mockRepo.On("Create", context.Background(), &repository.Product{ID: "1", Name: "Product 1", Stock: 10}).Return(nil)
 
