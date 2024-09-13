@@ -7,7 +7,6 @@ import (
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
-// MongoProductRepository is a concrete implementation of ProductRepository
 type MongoProductRepository struct {
 	collection *mongo.Collection
 }

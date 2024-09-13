@@ -6,7 +6,6 @@ import (
 	"github.com/stretchr/testify/mock"
 )
 
-// MockProductRepository is a mock implementation of ProductRepository for testing
 type MockProductRepository struct {
 	mock.Mock
 }
